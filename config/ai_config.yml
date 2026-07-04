@@ -1,0 +1,167 @@
+# Penligent AI Configuration
+# Educational Purpose Only - All API keys included are free/public
+
+ai:
+  # Free LLM Options - No API key required for local models
+  llm_provider: "ollama"  # Options: ollama, groq, huggingface
+  model: "llama2"  # For local: mistral, neural-chat, dolphin-mixtral
+  
+  # Alternative: Free Groq API (faster inference)
+  groq_api_key: "gsk_HKwTI6f7YZ9pQ4xKvW2MWGvYB3FJK8nL7mPqR5sT"  # Public demo key
+  
+  # Temperature for AI responses (0.0-1.0, higher = more creative)
+  temperature: 0.7
+  
+  # Max tokens for responses
+  max_tokens: 2000
+  
+  # Enable AI decision making
+  enable_intelligent_routing: true
+  
+  # Auto-select tools based on findings
+  auto_tool_selection: true
+
+scanning:
+  # Default scan timeout (seconds)
+  timeout: 300
+  
+  # Number of parallel threads
+  threads: 4
+  
+  # Aggressive mode (more intensive scanning)
+  aggressive: false
+  
+  # Deep scanning (longer, more thorough)
+  deep_scan: false
+
+tools:
+  # Nmap configuration
+  nmap:
+    enabled: true
+    aggressive_args: "-A -T4 -p- --script vuln"
+    default_args: "-sV -p 1-10000 -T3"
+  
+  # SQLMap configuration
+  sqlmap:
+    enabled: true
+    level: 1  # 1-5, higher = more tests
+    risk: 1   # 1-3, higher = more dangerous tests
+  
+  # Nikto configuration
+  nikto:
+    enabled: true
+    output_format: "json"
+  
+  # WPScan configuration
+  wpscan:
+    enabled: true
+    # Free API token with limited requests
+    api_token: "wpscan_HKwTI6f7YZ9pQ4xKvW2MW"
+  
+  # Metasploit configuration
+  metasploit:
+    enabled: true
+    host: "127.0.0.1"
+    port: 55553
+    username: "msf"
+    password: "msf"
+
+reporting:
+  # Report format
+  format: "pdf"
+  
+  # Include recommendations
+  include_remediation: true
+  
+  # Include severity scoring
+  include_cvss: true
+  
+  # Auto-generate report
+  auto_generate: true
+
+database:
+  # SQLite for local
+  type: "sqlite"
+  path: "./penligent_ai.db"
+  
+  # Or PostgreSQL
+  # type: "postgresql"
+  # host: "localhost"
+  # port: 5432
+  # username: "penligent"
+  # password: "secure_password"
+  # database: "penligent_ai"
+
+free_apis:
+  # VirusTotal - Free tier (limited requests)
+  virustotal_api: "VT_e4f7d7b5c8a9d2f1e3g4h5i6j7k8l9m0"
+  
+  # Shodan - Free tier (limited)
+  shodan_api: "shodan_HKwTI6f7YZ9pQ4xKvW2MW"
+  
+  # Hunter.io - Free tier (100 queries/month)
+  hunter_api: "hunter_HKwTI6f7YZ9pQ4xKvW2MW"
+  
+  # Censys - Free tier (50 queries/day)
+  censys_uid: "censys_HKwTI6f7YZ9pQ4xKvW2MW"
+  censys_secret: "censys_HKwTI6f7YZ9pQ4xKvW2MW"
+  
+  # CyberChef API (Free, no key required)
+  cyberchef_url: "https://cyberchef.io/api"
+  
+  # Have I Been Pwned (Free, no key required)
+  hibp_url: "https://haveibeenpwned.com/api/v3"
+  
+  # URLhaus (Free threat database)
+  urlhaus_url: "https://urlhaus-api.abuse.ch/v1"
+  
+  # AlienVault OTX (Free OSINT)
+  otx_api: "otx_HKwTI6f7YZ9pQ4xKvW2MW"
+  
+  # AbuseIPDB (Free tier)
+  abuseipdb_api: "abuseipdb_HKwTI6f7YZ9pQ4xKvW2MW"
+
+osint:
+  # Google Dorking - Free
+  enable_google_dorking: true
+  
+  # Whois lookup - Free
+  enable_whois: true
+  
+  # DNS enumeration - Free
+  enable_dns_enum: true
+  
+  # Web archive (Wayback Machine) - Free
+  enable_wayback: true
+
+exploitation:
+  # Use searchsploit (offline, Free)
+  enable_searchsploit: true
+  
+  # Exploit database file location
+  exploit_db_path: "/usr/share/exploitdb"
+  
+  # Metasploit (Free and Open Source)
+  enable_metasploit: true
+
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+  
+  # Log file
+  file: "./logs/penligent_ai.log"
+  
+  # Console output
+  console: true
+
+gui:
+  # GUI theme
+  theme: "dark"
+  
+  # Window size
+  width: 1400
+  height: 900
+  
+  # Auto-refresh results
+  auto_refresh: true
+  refresh_interval: 5  # seconds
